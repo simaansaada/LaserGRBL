@@ -359,12 +359,12 @@ Clicca per maggiori informazioni...</value>
     <value>Laser ON</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: M3 è il modo standard.
-Grbl v1.1 supporta una modalità M4 ottimizzata per i Laser.
-Laser OFF: è supportato solo il comando M5.
+Grbl v1.1 supporta una modalità M106 ottimizzata per i Laser.
+Laser OFF: è supportato solo il comando M107.
 
 Clicca per maggiori informazioni...</value>
   </data>

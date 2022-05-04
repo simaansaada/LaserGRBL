@@ -890,7 +890,7 @@ namespace LaserGRBL.RasterConverter
 							else if (SelectedTool == Tool.Vectorize)
 								PreviewVector(bmp);
                             else if (SelectedTool == Tool.Centerline)
-                                PreviewCenterline(bmp);
+								PreviewCenterline(bmp);
 							else if (SelectedTool == Tool.NoProcessing)
 								PreviewLineByLine(bmp);
 						}
@@ -1292,6 +1292,42 @@ namespace LaserGRBL.RasterConverter
 
 
 		private void PreviewVector(Bitmap bmp)
+		{
+			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
+			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;
+			Potrace.opttolerance = UseOptimize ? (double)Optimize : 0.2;
+			Potrace.curveoptimizing = UseOptimize; //optimize the path p, replacing sequences of Bezier segments by a single segment when possible.
+
+			if (MustExitTH)
+				return;
+
+			List<List<CsPotrace.Curve>> plist = Potrace.PotraceTrace(bmp);
+
+			if (MustExitTH)
+				return;
+
+			using (Graphics g = Graphics.FromImage(bmp))
+			{
+				g.Clear(Color.White); //remove original image
+
+				using (Brush fill = new SolidBrush(Color.FromArgb(FillingDirection != Direction.None ? 255 : 30, Color.Black)))
+					Potrace.Export2GDIPlus(plist, g, fill, null, 1); //trace filling
+
+				if (MustExitTH)
+					return;
+
+				PreviewLineByLine(bmp); //process filling with line by line preview
+
+				if (MustExitTH)
+					return;
+
+				Potrace.Export2GDIPlus(plist, g, null, Pens.Red, 0); //trace borders
+
+				if (MustExitTH)
+					return;
+			}
+		}
+		private void PreviewVector2(Bitmap bmp)
 		{
 			Potrace.turdsize = (int)(UseSpotRemoval ? SpotRemoval : 2);
 			Potrace.alphamax = UseSmoothing ? (double)Smoothing : 0.0;

@@ -124,7 +124,7 @@
     <value>mm/min</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Laser OFF</value>
@@ -163,7 +163,7 @@
     <value>W</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
-    <value>Laser ON: M3 er standard tilstand. Grbl v1.1 understøtter en ny M4 "Dynamisk Laser strømtilstand". Laser OFF: kun M5 kommando er understøttet.\n\nKlik for mere information...</value>
+    <value>Laser ON: M3 er standard tilstand. Grbl v1.1 understøtter en ny M106 "Dynamisk Laser strømtilstand". Laser OFF: kun M107 kommando er understøttet.\n\nKlik for mere information...</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>X</value>

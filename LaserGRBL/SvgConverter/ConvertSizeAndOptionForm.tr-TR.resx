@@ -134,8 +134,8 @@ Daha fazla bilgi için tıklayınız ...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Lazer AÇIK: M3 standart moddur.
-Grbl v1.1, yeni bir M4 "Dinamik Lazer Güç Modu" nu destekler.
-Lazer KAPALI: yalnızca M5 komutu desteklenir.
+Grbl v1.1, yeni bir M106 "Dinamik Lazer Güç Modu" nu destekler.
+Lazer KAPALI: yalnızca M107 komutu desteklenir.
 
 Daha fazla bilgi için tıklayınız ...</value>
   </data>

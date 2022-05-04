@@ -742,10 +742,10 @@ namespace LaserGRBL
 					{
 						string fn = System.IO.Path.GetFileNameWithoutExtension(lastFN);
 						string path = System.IO.Path.GetDirectoryName(lastFN);
-						sfd.FileName = System.IO.Path.Combine(path, fn + ".nc");
+						sfd.FileName = System.IO.Path.Combine(path, fn + ".gcode");
 					}
 
-					sfd.Filter = "GCODE Files|*.nc";
+					sfd.Filter = "GCODE Files|*.gcode";
 					sfd.AddExtension = true;
 					sfd.RestoreDirectory = true;
 
@@ -984,7 +984,7 @@ namespace LaserGRBL
 					lock (this)
 					{
 						mQueue.Clear(); //flush the queue of item to send
-						mQueue.Enqueue(new GrblCommand("M5")); //shut down laser
+						mQueue.Enqueue(new GrblCommand("M107")); //shut down laser
 					}
 				}
 				catch (Exception ex)
@@ -1093,7 +1093,7 @@ namespace LaserGRBL
 					spb.AnalyzeCommand(file[i], false);
 
 				mQueuePtr.Enqueue(new GrblCommand("G90")); //absolute coordinate
-				mQueuePtr.Enqueue(new GrblCommand(string.Format("M5 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
+				mQueuePtr.Enqueue(new GrblCommand(string.Format("M107 G0 {0} {1} {2} {3} {4}", spb.X, spb.Y, spb.Z, spb.F, spb.S))); //fast go to the computed position with laser off and set speed and power
 				mQueuePtr.Enqueue(new GrblCommand(spb.GetSettledModals()));
 
 				mTP.JobContinue(LoadedFile, position, mQueuePtr.Count);
@@ -1953,7 +1953,7 @@ namespace LaserGRBL
 				rline = rline.Substring(1, rline.Length - 2);
 
 				GrblVersionInfo rversion = StatusReportVersion(rline);
-				if (rversion >= new GrblVersionInfo(1, 1))
+				if (rversion > new GrblVersionInfo(1, 1))
 				{
 					//grbl > 1.1 - https://github.com/gnea/grbl/wiki/Grbl-v1.1-Interface#real-time-status-reports
 					string[] arr = rline.Split("|".ToCharArray());

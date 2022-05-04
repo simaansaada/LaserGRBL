@@ -521,8 +521,8 @@ Click for more information...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: M3 is the standard mode.
-Grbl v1.1 support a new M4 "Dynamic Laser Power Mode".
-Laser OFF: only M5 command is supported.
+Grbl v1.1 support a new M106 "Dynamic Laser Power Mode".
+Laser OFF: only M107 command is supported.
 
 Click for more information...</value>
   </data>

@@ -42,10 +42,10 @@ namespace LaserGRBL.SvgConverter
 
 		private static float gcodeXYFeed = 1999;        // XY feed to apply for G1
 
-		//private static bool gcodeSpindleToggle = true; // Switch on/off spindle for Pen down/up (M3/M5)
+		//private static bool gcodeSpindleToggle = true; // Switch on/off spindle for Pen down/up (M3/M107)
 		private static float gcodeSpindleSpeed = 999; // Spindle speed to apply
-		private static string gcodeSpindleCmdOn = "M3"; // Spindle Command M3 / M4
-		private static string gcodeSpindleCmdOff = "M4"; // Spindle Command M3 / M4
+		private static string gcodeSpindleCmdOn = "M3"; // Spindle Command M3 / M106
+		private static string gcodeSpindleCmdOff = "M106"; // Spindle Command M3 / M106
 
 		private static bool gcodeCompress = true;      // reduce code by avoiding sending again same G-Nr and unchanged coordinates
 													   //public static bool gcodeRelative = false;      // calculate relative coordinates for G91
@@ -61,7 +61,7 @@ namespace LaserGRBL.SvgConverter
 
 		public static void setup(GrblCore core)
 		{
-			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
+			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M106 / M107
 
 			setDecimalPlaces(mDecimalPlaces);
 
@@ -77,8 +77,8 @@ namespace LaserGRBL.SvgConverter
 			if (firmwareType == Firmware.Smoothie)
 				gcodeSpindleSpeed /= 255.0f;
 			gcodeSpindleCmdOn = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOn", "M3");
-			gcodeSpindleCmdOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M5");
-			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M4 / M5
+			gcodeSpindleCmdOff = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.LaserOff", "M107");
+			SupportPWM = Settings.GetObject("Support Hardware PWM", true); //If Support PWM use S command instead of M3-M106 / M107
 
 			lastMovewasG0 = true;
 			lastx = -1; lasty = -1; lastz = 0; lasts = -1 ; lastg = -1;
@@ -161,7 +161,7 @@ namespace LaserGRBL.SvgConverter
 			if (SupportPWM)
 				gcodeString.AppendFormat("S{0}{1}\r\n", gcodeSpindleSpeed, cmt); //only set SMax
 			else
-				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M3/M4
+				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOn, cmt); //only set M3/M106
 		}
 
 		public static void SpindleOff(StringBuilder gcodeString, string cmt = "")
@@ -171,7 +171,7 @@ namespace LaserGRBL.SvgConverter
 			if (SupportPWM)
 				gcodeString.AppendFormat("S0{0}\r\n", cmt); //only set S0
 			else
-				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOff, cmt); //only set M5
+				gcodeString.AppendFormat("{0}{1}\r\n", gcodeSpindleCmdOff, cmt); //only set M107
 		}
 
 		internal static void PutInitialCommand(StringBuilder gcodeString)
@@ -185,9 +185,9 @@ namespace LaserGRBL.SvgConverter
 		internal static void PutFinalCommand(StringBuilder gcodeString)
 		{
 			if (SupportPWM)
-				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
+				gcodeString.AppendFormat("M107 S0\r\n"); //turn OFF and zero power
 			else
-				gcodeString.AppendFormat("M5 S0\r\n"); //turn OFF and zero power
+				gcodeString.AppendFormat("M107 S0\r\n"); //turn OFF and zero power
 		}
 
 		public static void PenDown(StringBuilder gcodeString, string cmto = "")

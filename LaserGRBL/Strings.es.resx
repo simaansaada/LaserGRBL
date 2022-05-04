@@ -389,8 +389,8 @@ Sin el procedimiento de volver al punto de partida ($H) el resultado puede ser n
     <value>Zig Zag</value>
   </data>
   <data name="WarnWrongLaserMode" xml:space="preserve">
-    <value>"M4 Dynamic Laser Power Mode" has been set, but your engraver doesn't seem to support it.
-Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can take advantage of M4 option.</value>
+    <value>"M106 Dynamic Laser Power Mode" has been set, but your engraver doesn't seem to support it.
+Only engravers with grbl version &gt;= 1.1 with "laser mode" enabled ($32=1) can take advantage of M106 option.</value>
   </data>
   <data name="WarnWrongLaserModeTitle" xml:space="preserve">
     <value>Warning</value>

@@ -143,8 +143,8 @@ Click pentru mai multe informatii...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: M3 este modul standard.
-Grbl v1.1 acceptă un nou M4 „Dynamic Laser Power Mode” (controlul dinamic al puterii).
-Laser OPRIT: este acceptată doar comanda M5.
+Grbl v1.1 acceptă un nou M106 „Dynamic Laser Power Mode” (controlul dinamic al puterii).
+Laser OPRIT: este acceptată doar comanda M107.
 
 Click pentru mai multe informatii...</value>
   </data>

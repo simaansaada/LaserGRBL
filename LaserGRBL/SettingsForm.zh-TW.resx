@@ -369,8 +369,8 @@ $ 3-方向，$ 102-步數，$ 112-最大速率，$ 122-加速度等設定值
     <value>秒</value>
   </data>
   <data name="label21.Text" xml:space="preserve">
-    <value>注意：此功能僅適用於grbl版本； &gt; v1.1，並啟用“激光模式M4(非M3模式)”。
-M4設定請至主選單Grbl&gt;&gt;Grbl 韌體參數設定&gt;&gt;$32 設定 1 (開啟M4支持)
+    <value>注意：此功能僅適用於grbl版本； &gt; v1.1，並啟用“激光模式M106(非M3模式)”。
+M106設定請至主選單Grbl&gt;&gt;Grbl 韌體參數設定&gt;&gt;$32 設定 1 (開啟M106支持)
 
 如果您在舊版本的grbl（或關閉了“激光模式”）下使用自動冷卻，激光在休息期間不會關閉，並會在您的工作中燒一個洞！</value>
   </data>

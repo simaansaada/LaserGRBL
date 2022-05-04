@@ -388,13 +388,13 @@ Click aquí para más información...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ON: M3 es el modo estándar.
-Grbl v1.1 soporta un nuevo M4 "Modo Dinámico de Potencia de Laser"
-Laser OFF: solamente el commando M5 está soportado.
+Grbl v1.1 soporta un nuevo M106 "Modo Dinámico de Potencia de Laser"
+Laser OFF: solamente el commando M107 está soportado.
 
 Click aquí para más información...</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Imagen objetivo</value>

@@ -48,6 +48,47 @@ namespace CsPotrace
 					Curve C = LC[j];
 					if (C.Kind == CurveKind.Line)
 						Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
+                    else
+                    {
+                        PointF A = new PointF((float)C.A.X, (float)C.A.Y);
+                        Current.AddBezier(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.ControlPointA.X, (float)C.ControlPointA.Y), new PointF((float)C.ControlPointB.X, (float)C.ControlPointB.Y), new PointF((float)C.B.X, (float)C.B.Y));
+                    }
+
+                }
+				gp.AddPath(Current, false);
+			}
+
+			if (fill != null)
+				g.FillPath(fill, gp);
+
+			if (border != null)
+				g.DrawPath(border, gp);
+
+
+			if (inset > 0)
+			{
+				using (Pen p = new Pen(Color.White, (float)inset))
+					g.DrawPath(p, gp);
+			}
+
+        }
+        public static void Export2CenterLine(List<List<Curve>> Fig, List<List<Curve>> Fig2, Graphics g, Brush fill, Pen border, double inset)
+        {
+			g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+			g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+			g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+			g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+
+			GraphicsPath gp = new GraphicsPath();
+			foreach (List<Curve> LC in Fig)
+			{
+				GraphicsPath Current = new GraphicsPath();
+				for (int j = 0; j < LC.Count; j++)
+				{
+
+					Curve C = LC[j];
+					if (C.Kind == CurveKind.Line)
+						Current.AddLine(new PointF((float)C.A.X, (float)C.A.Y), new PointF((float)C.B.X, (float)C.B.Y));
 					else
 					{
 						PointF A = new PointF((float)C.A.X, (float)C.A.Y);

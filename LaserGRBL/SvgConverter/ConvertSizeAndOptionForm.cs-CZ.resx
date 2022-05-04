@@ -155,8 +155,8 @@ Klikněte pro více informací...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser ZAP: M3 je standardní příkaz.
-Grbl v1.1 podporuje nový M4 "Dynamic Laser Power Mode".
-Laser VYP: M5 je jediný příkaz, který je podporován.
+Grbl v1.1 podporuje nový M106 "Dynamic Laser Power Mode".
+Laser VYP: M107 je jediný příkaz, který je podporován.
 
 Klikněte pro více informací...</value>
   </data>

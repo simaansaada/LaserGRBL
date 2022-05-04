@@ -370,8 +370,8 @@ Bu, yumuşak limit hatası oluşturabilir veya makine eksen sınırına çarpabi
     <value>Zig Zag</value>
   </data>
   <data name="WarnWrongLaserMode" xml:space="preserve">
-    <value>"M4 Dinamik Lazer Güç Modu" ayarlandı, ancak oymacınız bunu desteklemiyor gibi görünüyor.
-Sadece grbl versiyonu&gt; = 1.1 olan ve "lazer modu" etkinleştirilmiş ($32  = 1) gravür makineleri M4 seçeneğinden yararlanabilir.</value>
+    <value>"M106 Dinamik Lazer Güç Modu" ayarlandı, ancak oymacınız bunu desteklemiyor gibi görünüyor.
+Sadece grbl versiyonu&gt; = 1.1 olan ve "lazer modu" etkinleştirilmiş ($32  = 1) gravür makineleri M106 seçeneğinden yararlanabilir.</value>
   </data>
   <data name="WarnWrongLaserModeTitle" xml:space="preserve">
     <value>Uyarı</value>

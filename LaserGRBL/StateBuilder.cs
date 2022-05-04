@@ -265,7 +265,7 @@ namespace LaserGRBL
 			Cutter Radius Compensation	[G40]
 			Tool Length Offset			G43.1, [G49]
 			Program Mode				[M0], M1, M2, M30
-			Spindle State				M3, M4, [M5]
+			Spindle State				M3, M106, [M107]
 			Coolant State				M7, M8, [M9]
 			*/
 
@@ -312,7 +312,7 @@ namespace LaserGRBL
 			protected ModalElement ToolLengthOffset = new ModalElement("G49", "G43.1");
 			protected ModalElement ProgramMode = new ModalElement("M0", "M1", "M2", "M30");
 			protected ModalElement CoolantState = new ModalElement("M9", "M7", "M8");
-			protected ModalElement SpindleState = new ModalElement("M5", "M3", "M4");
+			protected ModalElement SpindleState = new ModalElement("M107", "M3", "M106","M106","M107");
 
 			//private void UpdateModals(GrblCommand cmd) //update modals - BUILD IF NEEDED
 			//{

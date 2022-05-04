@@ -154,8 +154,8 @@ Click aqui para obter mais informações...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Ligar laser: (M3) é o modo padrão.
-Para GRBL V1.1 o modo de energia dinâmico (M4)  também é suportado. 
-Desligar Laser: Somente o comando (M5) é suportado.     
+Para GRBL V1.1 o modo de energia dinâmico (M106)  também é suportado. 
+Desligar Laser: Somente o comando (M107) é suportado.     
 
 Clique aqui para obter mais informações...</value>
   </data>

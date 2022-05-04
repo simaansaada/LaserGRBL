@@ -343,10 +343,10 @@ namespace LaserGRBL
 							else
 								list.Add(new GrblCommand(String.Format($"{c.lOff} S{core.Configuration.MaxPWM}"))); //laser off and power to max power
 
-							//set speed to markspeed
-							// For marlin, need to specify G1 each time :
-							// list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
-							list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+                            //set speed to markspeed
+                            // For marlin, need to specify G1 each time :
+                            list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+                            //list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
 
 							c.vectorfilling = true;
 							ImageLine2Line(resampled, c);
@@ -371,11 +371,11 @@ namespace LaserGRBL
 			{
 				List<string> gc = new List<string>();
 				if (supportPWM)
-					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
+					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, $"{c.lOn} S{c.maxPower}", $"{c.lOn} S0", bmp.Size, skipcmd));
 				else
 					gc.AddRange(Potrace.Export2GCode(flist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
-				list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed)));
+				list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
 				foreach (string code in gc)
 					list.Add(new GrblCommand(code));
 			}
@@ -392,7 +392,7 @@ namespace LaserGRBL
 
 				List<string> gc = new List<string>();
 				if (supportPWM)
-					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"S{c.maxPower}", "S0", bmp.Size, skipcmd));
+					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, $"{c.lOn} S{c.maxPower}", $"{c.lOn} S0", bmp.Size, skipcmd));
 				else
 					gc.AddRange(Potrace.Export2GCode(plist, c.oX, c.oY, c.res, c.lOn, c.lOff, bmp.Size, skipcmd));
 
@@ -479,12 +479,12 @@ namespace LaserGRBL
 			else
 				list.Add(new GrblCommand($"{c.lOff} S{core.Configuration.MaxPWM}")); //laser off and power to maxpower
 
-			//set speed to markspeed						
-			// For marlin, need to specify G1 each time :
-			//list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
-			//list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed))); //replaced by the first move to offset and set speed
+            //set speed to markspeed						
+            // For marlin, need to specify G1 each time :
+            list.Add(new GrblCommand(String.Format("G1 F{0}", c.markSpeed)));
+            //list.Add(new GrblCommand(String.Format("F{0}", c.markSpeed))); //replaced by the first move to offset and set speed
 
-			ImageLine2Line(bmp, c);
+            ImageLine2Line(bmp, c);
 
 			//laser off
 			list.Add(new GrblCommand(c.lOff));
@@ -498,9 +498,9 @@ namespace LaserGRBL
 			RiseOnFileLoaded(filename, elapsed);
 		}
 
-		// For Marlin, as we sen M106 command, we need to know last color send
-		//private int lastColorSend = 0;
-		private void ImageLine2Line(Bitmap bmp, L2LConf c)
+        // For Marlin, as we sen M106 command, we need to know last color send
+        private int lastColorSend = 0;
+        private void ImageLine2Line(Bitmap bmp, L2LConf c)
 		{
 			bool fast = true;
 			List<ColorSegment> segments = GetSegments(bmp, c);
@@ -516,33 +516,33 @@ namespace LaserGRBL
 				if (seg.IsSeparator && !fast) //fast = previous segment contains S0 color
 				{
 					if (c.pwm)
-						temp.Add(new GrblCommand("S0"));
+						temp.Add(new GrblCommand($"{ c.lOn } S0"));
 					else
 						temp.Add(new GrblCommand(c.lOff)); //laser off
 				}
 
 				fast = seg.Fast(c);
 
-				// For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
-				// So we have to speficy gcode (G0 or G1) each time....
-				//if (c.firmwareType == Firmware.Marlin)
-				//{
-				//	// Add M106 only if color has changed
-				//	if (lastColorSend != seg.mColor)
-				//		temp.Add(new GrblCommand(String.Format("M106 P1 S{0}", fast ? 0 : seg.mColor)));
-				//	lastColorSend = seg.mColor;
-				//	temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
-				//}
-				//else
-				//{
+                // For marlin firmware, we must defined laser power before moving (unsing M106 or M107)
+                // So we have to speficy gcode (G0 or G1) each time....
+                if (c.firmwareType == Firmware.Marlin)
+                {
+                    // Add M106 only if color has changed
+                    if (lastColorSend != seg.mColor)
+                        temp.Add(new GrblCommand(String.Format("M106 S{0}", fast ? 0 : seg.mColor)));
+                    lastColorSend = seg.mColor;
+                    temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? "G0" : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
+                }
+                else
+                {
 
-				if (changeGMode)
+                    if (changeGMode)
 					temp.Add(new GrblCommand(String.Format("{0} {1}", fast ? skipcmd : "G1", seg.ToGCodeNumber(ref cumX, ref cumY, c))));
 				else
 					temp.Add(new GrblCommand(seg.ToGCodeNumber(ref cumX, ref cumY, c)));
 
-				//}
-			}
+                }
+            }
 
 			temp = OptimizeLine2Line(temp, c);
 			list.AddRange(temp);
@@ -1494,6 +1494,6 @@ G92: Coordinate Offset
 G92.1: Clear Coordinate System Offsets
 G93, G94: Feedrate Modes
 M0, M2, M30: Program Pause and End
-M3, M4, M5: Spindle Control
+M3, M106, M107: Spindle Control
 M8, M9: Coolant Control
 */

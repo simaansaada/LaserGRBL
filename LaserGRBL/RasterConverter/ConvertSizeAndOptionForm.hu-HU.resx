@@ -184,7 +184,7 @@
     <value>mm/min</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="label26.Text" xml:space="preserve">
     <value>Laser OFF</value>
@@ -242,8 +242,8 @@ Kattintson további információkért ...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Lézer BE: Az M3 a szokásos mód.
-A Grbl v1.1 támogatja az új M4 "Dinamikus lézeres energiamódot".
-Lézer KI: Csak az M5 parancs támogatott.
+A Grbl v1.1 támogatja az új M106 "Dinamikus lézeres energiamódot".
+Lézer KI: Csak az M107 parancs támogatott.
 
 Kattintson további információkért ...</value>
   </data>

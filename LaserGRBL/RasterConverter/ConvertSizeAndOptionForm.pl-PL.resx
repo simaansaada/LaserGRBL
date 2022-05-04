@@ -185,13 +185,13 @@ Kliknij, aby uzyskać więcej informacji ...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser WŁ: M3 to tryb standardowy.
-Grbl v1.1 obsługuje nowy tryb dynamicznego zasilania laserowego M4.
-Laser WYŁ: obsługiwane jest tylko polecenie M5.
+Grbl v1.1 obsługuje nowy tryb dynamicznego zasilania laserowego M106.
+Laser WYŁ: obsługiwane jest tylko polecenie M107.
 
 Kliknij, aby uzyskać więcej informacji ...</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="GbLaser.Text" xml:space="preserve">
     <value>Opcje Lasera</value>

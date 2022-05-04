@@ -390,8 +390,8 @@ Most nem lehet új fájlt megnyitni.</value>
     <value>Cikk-cakk</value>
   </data>
   <data name="WarnWrongLaserMode" xml:space="preserve">
-    <value>"M4 Dinamikus Lézer Erősség Mód" be lett állítva, de úgy tűnik, a gravírozója nem támogatja.
-Csak az 1.1 vagy újabb grbl verziójú gravírozóknál használható az M4 beállítás, ha a "lézer mód" engedélyezve van ($31=1).</value>
+    <value>"M106 Dinamikus Lézer Erősség Mód" be lett állítva, de úgy tűnik, a gravírozója nem támogatja.
+Csak az 1.1 vagy újabb grbl verziójú gravírozóknál használható az M106 beállítás, ha a "lézer mód" engedélyezve van ($31=1).</value>
   </data>
   <data name="WarnWrongLaserModeTitle" xml:space="preserve">
     <value>Figyelmeztetés</value>

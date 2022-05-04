@@ -389,8 +389,8 @@ Toch doorgaan?</value>
     <value>Zig Zag</value>
   </data>
   <data name="WarnWrongLaserMode" xml:space="preserve">
-    <value>M4 Dynamic Laser Power Mode" is ingesteld, maar uw graveur lijkt dit niet te ondersteunen.
-Alleen graveurs met grbl-versie &gt;= 1.1 met "lasermodus" ingeschakeld ($32=1) kunnen profiteren van de M4-optie.</value>
+    <value>M106 Dynamic Laser Power Mode" is ingesteld, maar uw graveur lijkt dit niet te ondersteunen.
+Alleen graveurs met grbl-versie &gt;= 1.1 met "lasermodus" ingeschakeld ($32=1) kunnen profiteren van de M106-optie.</value>
   </data>
   <data name="WarnWrongLaserModeTitle" xml:space="preserve">
     <value>Waarschuwing</value>

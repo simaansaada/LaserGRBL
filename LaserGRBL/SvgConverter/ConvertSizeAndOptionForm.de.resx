@@ -275,8 +275,8 @@ Klicken Sie für mehr Informationen ...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser an: M3 ist der Standardmodus.
-Grbl V1.1 unterstützt einen neuen M4 "Dynamic laser power mode".
-Laser aus: nur M5 Befehl wird unterstützt.
+Grbl V1.1 unterstützt einen neuen M106 "Dynamic laser power mode".
+Laser aus: nur M107 Befehl wird unterstützt.
 
 Klicken Sie für mehr Informationen ...</value>
   </data>
@@ -308,7 +308,7 @@ Klicken Sie für mehr Informationen ...</value>
     <value>mm/min</value>
   </data>
   <data name="CBLaserOFF.Items" xml:space="preserve">
-    <value>M5</value>
+    <value>M107</value>
   </data>
   <data name="GbSpeed.Text" xml:space="preserve">
     <value>Geschwindigkeit</value>

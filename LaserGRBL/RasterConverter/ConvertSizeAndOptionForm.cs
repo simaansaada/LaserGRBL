@@ -21,7 +21,7 @@ namespace LaserGRBL.RasterConverter
 		GrblCore mCore;
 		bool supportPWM = Settings.GetObject("Support Hardware PWM", true);
 
-		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M4 - Dynamic Power", "M4") };
+		public ComboboxItem[] LaserOptions = new ComboboxItem[] { new ComboboxItem("M3 - Constant Power", "M3"), new ComboboxItem("M106 - Dynamic Power", "M106") };
 		public class ComboboxItem
 		{
 			public string Text { get; set; }
@@ -96,7 +96,7 @@ namespace LaserGRBL.RasterConverter
 			else
 				CBLaserON.SelectedItem = LaserOptions[1];
 
-			IP.LaserOff = "M5"; 
+			IP.LaserOff = "M107"; 
 
 			IIMinPower.CurrentValue = IP.MinPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMin", 0);
 			IIMaxPower.CurrentValue = IP.MaxPower = Settings.GetObject("GrayScaleConversion.Gcode.LaserOptions.PowerMax", (int)mCore.Configuration.MaxPWM);
@@ -220,7 +220,7 @@ namespace LaserGRBL.RasterConverter
 
 			if (mode != null)
 			{
-				if (!mCore.Configuration.LaserMode && (mode.Value as string) == "M4")
+				if (!mCore.Configuration.LaserMode && (mode.Value as string) == "M106")
 					MessageBox.Show(Strings.WarnWrongLaserMode, Strings.WarnWrongLaserModeTitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);//warning!!
 
 				IP.LaserOn = mode.Value as string;

@@ -388,8 +388,8 @@ To by mohlo vygenerovat chybu soft-limitu. Jste si jisti zadanými hodnotami?</v
     <value>Cik Cak</value>
   </data>
   <data name="WarnWrongLaserMode" xml:space="preserve">
-    <value>„M4 dynamický výkon laseru“ byl nastaven, ale Vaše zařízení to zřejmě nepodporuje.
-Pouze zařízení s verzí grbl &gt; = 1,1 s „laserovým režimem“ ($ 32 = 1) může využít možnosti M4.</value>
+    <value>„M106 dynamický výkon laseru“ byl nastaven, ale Vaše zařízení to zřejmě nepodporuje.
+Pouze zařízení s verzí grbl &gt; = 1,1 s „laserovým režimem“ ($ 32 = 1) může využít možnosti M106.</value>
   </data>
   <data name="WarnWrongLaserModeTitle" xml:space="preserve">
     <value>Upozornění</value>

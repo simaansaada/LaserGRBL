@@ -143,8 +143,8 @@ Klik voor meer informatie...</value>
   </data>
   <data name="BtnOnOffInfo.ToolTip" xml:space="preserve">
     <value>Laser AAN: M3 is de standaardmodus.
-Grbl v1.1 ondersteunt een nieuwe M4 "Dynamic Laser Power Mode".
-Laser UIT: alleen M5-commando wordt ondersteund.
+Grbl v1.1 ondersteunt een nieuwe M106 "Dynamic Laser Power Mode".
+Laser UIT: alleen M107-commando wordt ondersteund.
 
 Klik voor meer informatie...</value>
   </data>
